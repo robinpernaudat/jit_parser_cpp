@@ -1,9 +1,3 @@
-/*
- * node.h
- *
- *  Created on: 22 janv. 2016
- *      Author: robin
- */
 
 #ifndef SRC_NODE_H_
 #define SRC_NODE_H_
@@ -13,8 +7,8 @@ class node;
 using node_p = std::shared_ptr<node>;
 class node {
 public:
-	node();
-	virtual ~node();
+  node();
+  virtual ~node();
 };
 
 } /* namespace jit_parser */

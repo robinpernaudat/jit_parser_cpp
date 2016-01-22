@@ -10,12 +10,11 @@
 namespace jit_parser {
 
 JitParser::JitParser() {
-	// TODO Auto-generated constructor stub
-
+  // TODO Auto-generated constructor stub
 }
 
 JitParser::~JitParser() {
-	// TODO Auto-generated destructor stub
+  // TODO Auto-generated destructor stub
 }
 
 } /* namespace jit_parser */
