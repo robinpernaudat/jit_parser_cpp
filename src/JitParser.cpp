@@ -5,7 +5,7 @@
  *      Author: robin
  */
 
-#include "JitParser.h"
+#include <jitparser/JitParser.h>
 
 namespace jit_parser {
 
