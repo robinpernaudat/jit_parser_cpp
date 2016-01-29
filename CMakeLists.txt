@@ -6,7 +6,8 @@ project (jitparser)
 
 set(SRC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INC ${CMAKE_CURRENT_SOURCE_DIR}/includes)
-
+set(AllInc "/usr/include" ${INC})
+set(BUILD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/build)
 
 #------ using clang compiler ------
     SET (CMAKE_C_COMPILER             "/usr/local/bin/clang")
@@ -25,19 +26,14 @@ set(INC ${CMAKE_CURRENT_SOURCE_DIR}/includes)
 #-----------------------------------
 
 
+#construction de la lib
+add_subdirectory(src)
 
 
-include_directories(
-    /usr/include
-    ${INC}
-)
-FILE(GLOB SOURCES
-    ${SRC}/*.cpp
-)
-FILE(GLOB HEADERS
-    ${INC}/jitparser/*.h
-)
-
+#test unitaires
+add_subdirectory(test)
+enable_testing ()
+add_test (NAME TestsUnitaires COMMAND unit_tests)
 
 
 
@@ -47,15 +43,13 @@ add_custom_target(push COMMAND git push)
 
 
 
-# the lib definition
-add_library(jitparser ${SOURCES} ${HEADERS})
 
 
 #format the code before compile (with clang-format)
-foreach(file ${HEADERS} ${SOURCES} )
-    add_custom_command(TARGET jitparser POST_BUILD 
-        COMMAND clang-format ${file} > /tmp/file_jit_`echo ${file} | sed -e 's/\\//_/g'`
-        COMMAND cat /tmp/file_jit_`echo ${file} | sed -e 's/\\//_/g'` > ${file})
-endforeach(file)
+#foreach(file ${HEADERS} ${SOURCES} )
+#    add_custom_command(TARGET jitparser POST_BUILD 
+#        COMMAND clang-format ${file} > /tmp/file_jit_`echo ${file} | sed -e 's/\\//_/g'`
+#        COMMAND cat /tmp/file_jit_`echo ${file} | sed -e 's/\\//_/g'` > ${file})
+#endforeach(file)
 
 
