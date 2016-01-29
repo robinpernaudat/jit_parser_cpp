@@ -5,11 +5,11 @@
  *      Author: robin
  */
 
-#include "re2graph.h"
+#include <jitparser/re2graph.h>
 
 namespace jit_parser {
 
-re2graph::re2graph() {
+re2graph::re2graph(string regex) {
 	// TODO Auto-generated constructor stub
 
 }
